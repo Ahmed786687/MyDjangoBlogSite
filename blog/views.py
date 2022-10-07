@@ -3,7 +3,7 @@ from datetime import date
 from django.shortcuts import render
 
 all_posts = [
-{
+    {
         'slug': 'hike-in-the-mountains',
         'image': 'mountain_hiking.jpg',
         'author': "Ahmad Iqbal",
@@ -41,8 +41,10 @@ all_posts = [
     },
 ]
 
+
 def get_date(post):
     return post['date']
+
 
 # Create your views here.
 
