@@ -1,10 +1,21 @@
 {% extends 'base.html' %}
+{% load static %}
+
 {% block title %}
-We didn't find that Page!
+    We didn't find that Page!
 {% endblock %}
 
+{% block css_files %}
+    {#    <link rel="stylesheet" href="{% static 'includes/post.css' %}">#}
+    <link rel="stylesheet" href="{% static 'blog/all-posts.css' %}">
+    <link rel="stylesheet" href="{% static 'app.css' %}">
+    {#    <link rel="stylesheet" href="{% static 'blog/post-detail.css' %}">#}
+
+{% endblock %}
 
 {% block content %}
-<h2>We're sorry!</h2>
-    <p>But we couldn't find that page!</p>
+    <section id="error">
+        <h2>We're sorry for your trouble!</h2>
+        <p>But we couldn't find that page!</p>
+    </section>
 {% endblock %}
