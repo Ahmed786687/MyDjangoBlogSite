@@ -1,6 +1,8 @@
 from datetime import date
 
 from django.shortcuts import render
+from django.http import Http404, HttpResponseNotFound
+from django.template.loader import render_to_string
 
 all_posts = [
     {
@@ -63,7 +65,12 @@ def posts(request):
 
 
 def post_detail(request, slug):
-    post_identified = next(post for post in all_posts if post['slug'] == slug)
-    return render(request, "blog/post-detail.html", {
-        "post": post_identified
-    })
+    try:
+        post_identified = next(post for post in all_posts if post['slug'] == slug)
+        return render(request, "blog/post-detail.html", {
+            "post": post_identified
+        })
+    except:
+        message = render_to_string("404.html")
+        # raise Http404(Exception)
+        return HttpResponseNotFound(message)

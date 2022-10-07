@@ -15,9 +15,9 @@
 {% block content %}
 
     <section id="summary">
-        <h2>{{ post.title}}</h2>
+        <h2>{{ post.title|title}}</h2>
         <article>
-            <img src="{% static 'images/mountain_hiking.jpg' %}" alt="Post title">
+            <img src="{% static 'images/'|add:post.image %}" alt="{{ post.title|title}}">
             <address>By {{ post.author|title }}</address>
             <div>
                 Last Updated on
