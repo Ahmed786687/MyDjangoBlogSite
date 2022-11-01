@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block title %}
-{{ post.title}}
+    {{ post.title }}
 {% endblock %}
 
 {% block css_files %}
@@ -15,45 +15,29 @@
 {% block content %}
 
     <section id="summary">
-        <h2>{{ post.title|title}}</h2>
+
+        <div class="title-tags">
+            <h2>{{ post.title|title }}</h2>
+            <div class="tag">
+                {% for tag in post_tags %}
+                        <span>{{ tag.captions.capitalize }}</span>
+                {% endfor %}
+            </div>
+        </div>
+
+
         <article>
-            <img src="{% static 'images/'|add:post.image %}" alt="{{ post.title|title}}">
-            <address>By {{ post.author|title }}</address>
+            <img src="{{ post.image.url }}" alt="{{ post.title|title }}">
+            <address>By <a href="mailto:{{ post.author.emailAddress }}">
+                {{ post.author|title }}</a></address>
             <div>
                 Last Updated on
-                <time> {{ post.date|date:"d M Y"}}</time>
+                <time> {{ post.date|date:"d M Y" }}</time>
             </div>
         </article>
     </section>
 
     <main>
-    {{ post.content|linebreaks }}
-{#        <p>#}
-{#            The flex property in CSS is the combination of flex-grow, flex-shrink, and flex-basis#}
-{#            property. It is used to set the length of flexible items. The flex property is much#}
-{#            responsive and mobile friendly. It is easy to position child elements and the main#}
-{#            container. The margin does not collapse with the content margins. Order of any element#}
-{#            can be easily changed without editing the HTML section. The flexbox was added to the#}
-{#            CSS standards a few years ago to manage space distribution and element alignment.#}
-{#            Basically it is one-dimensional layout syntax.#}
-{#        </p>#}
-{#        <p>#}
-{#            The flex property in CSS is the combination of flex-grow, flex-shrink, and flex-basis#}
-{#            property. It is used to set the length of flexible items. The flex property is much#}
-{#            responsive and mobile friendly. It is easy to position child elements and the main#}
-{#            container. The margin does not collapse with the content margins. Order of any element#}
-{#            can be easily changed without editing the HTML section. The flexbox was added to the#}
-{#            CSS standards a few years ago to manage space distribution and element alignment.#}
-{#            Basically it is one-dimensional layout syntax.#}
-{#        </p>#}
-{#        <p>#}
-{#            The flex property in CSS is the combination of flex-grow, flex-shrink, and flex-basis#}
-{#            property. It is used to set the length of flexible items. The flex property is much#}
-{#            responsive and mobile friendly. It is easy to position child elements and the main#}
-{#            container. The margin does not collapse with the content margins. Order of any element#}
-{#            can be easily changed without editing the HTML section. The flexbox was added to the#}
-{#            CSS standards a few years ago to manage space distribution and element alignment.#}
-{#            Basically it is one-dimensional layout syntax.#}
-{#        </p>#}
+        {{ post.content|linebreaks }}
     </main>
 {% endblock %}
