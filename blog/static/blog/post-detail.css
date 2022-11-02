@@ -27,13 +27,22 @@
     margin-bottom: auto;
 }
 
-#summary .title-tags h2{
+#summary .title-tags h2 {
     display: flex;
     margin: 0;
 }
 
-#summary .title-tags tag{
+#summary .title-tags tag {
     margin-top: 1rem;
+}
+
+#summary .button {
+    margin-top: 1rem;
+    /*background-color: #ac5ef3;*/
+    /*color: white;*/
+    /*padding: 0.75rem 2rem;*/
+    /*border-radius: 0.5rem;*/
+    /*border: none;*/
 }
 
 #summary span {
@@ -82,6 +91,7 @@
     color: white;
 }
 
+
 main {
     width: 90%;
     border-radius: 2rem;
@@ -90,3 +100,106 @@ main {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
 }
 
+
+#comments {
+    width: 90%;
+    margin: 3rem auto;
+    display: flex;
+    flex-direction: row-reverse;
+    background-color: #353535;
+    justify-content: space-between;
+
+}
+
+.comment-form {
+    width: 50%;
+    margin: 3rem;
+    /*max-width: 40rem;*/
+    border-radius: 12px;
+    background-color: white;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+    padding: 2rem;
+}
+
+
+.comment-form h2 {
+    color: #6305dd;
+}
+
+.form-control {
+    margin-bottom: 1rem;
+}
+
+.form-control label {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    display: block;
+    color: #353535;
+}
+
+.form-control input,
+.form-control textarea {
+    display: block;
+    width: 100%;
+    font: inherit;
+    padding: 0.25rem;
+    border-radius: 6px;
+    border-width: 1px;
+}
+
+
+.form-control input:hover,
+.form-control textarea:hover {
+    border-color: #6305dd;
+    border-width: 2px;
+
+}
+
+
+.form-control input:active,
+.form-control textarea:active {
+    border-color: #6305dd;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+
+.form-button {
+    font: inherit;
+    background-color: #ac5ef3;
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    border: #390281;
+    cursor: pointer;
+}
+
+.form-button:active,
+.form-button:hover {
+    background-color: #6305dd;
+}
+
+.comments-area {
+    width: 50%;
+    margin: 3rem;
+    /*line-height: 0;*/
+    background-color: #ac5ef3;
+    box-shadow: 0 2px 8px #390281;
+    color: white;
+    padding: 2rem 2rem 2rem 0;
+    border-radius: 1rem;
+}
+
+.comments-area li {
+    list-style: none;
+}
+
+.comments-area h2 {
+    padding-left: 2rem;
+    margin-bottom: 3rem;
+    color: #390281;
+}
+
+.comments-area p {
+    display: flex;
+    flex-wrap: wrap;
+}

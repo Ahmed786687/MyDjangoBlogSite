@@ -20,9 +20,21 @@
             <h2>{{ post.title|title }}</h2>
             <div class="tag">
                 {% for tag in post_tags %}
-                        <span>{{ tag.captions.capitalize }}</span>
+                    <span>{{ tag.captions.capitalize }}</span>
                 {% endfor %}
             </div>
+
+            <div id="read-later">
+                <form action="{% url "read-later" %}" method="post">
+                    {% csrf_token %}
+                    <input type="hidden" value="{{ post.id }}" name="post_id">
+                    <button class="button">Read Later</button>
+
+                </form>
+            </div>
+
+
+            </a>
         </div>
 
 
@@ -40,4 +52,39 @@
     <main>
         {{ post.content|linebreaks }}
     </main>
+
+    <section id="comments">
+
+        <div class="comments-area">
+            <h2>Comments</h2>
+            <ul>
+                {% if not comments %}
+                    <h3>No Comments to show Here!</h3>
+                {% endif %}
+                {% for comment in comments %}
+                    <li>
+                        <h3 class="comment-area-username">{{ comment.user_name }} </h3>
+                        <p class="comment-area-comment">{{ comment.comment }}</p>
+                        <hr>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="comment-form">
+            <h2>Share Your Thoughts</h2>
+            <form method="post" action="{% url "post-detail-page" post.slug %}">
+                {% csrf_token %}
+                {% for form_field in comment_form %}
+                    <div class="form-control {% if form_field.errors %}invalid{% endif %}">
+                        {{ form_field.label_tag }}
+                        {{ form_field }}
+                        {{ form_field.errors }}
+                    </div>
+                {% endfor %}
+                {#            {{ comment_form.as_p }}#}
+
+                <button class="form-button">Post Comment</button>
+            </form>
+        </div>
+    </section>
 {% endblock %}
